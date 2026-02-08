@@ -222,30 +222,34 @@ fun MovieDetailScreen(
 
                             Spacer(modifier = Modifier.height(16.dp))
 
-                            try {
-                                val genresArray = JSONArray(movie.genres)
-                                val genresList = mutableListOf<String>()
-                                for (i in 0 until genresArray.length()) {
-                                    val genreObj = genresArray.getJSONObject(i)
-                                    genresList.add(genreObj.getString("name"))
+                            // Parse and display genres
+                            val genresList = remember(movie.genres) {
+                                try {
+                                    val genresArray = JSONArray(movie.genres)
+                                    val list = mutableListOf<String>()
+                                    for (i in 0 until genresArray.length()) {
+                                        val genreObj = genresArray.getJSONObject(i)
+                                        list.add(genreObj.getString("name"))
+                                    }
+                                    list
+                                } catch (e: Exception) {
+                                    emptyList()
                                 }
-                                
-                                if (genresList.isNotEmpty()) {
-                                    Text(
-                                        text = "Genres",
-                                        style = MaterialTheme.typography.labelMedium,
-                                        color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f)
-                                    )
-                                    Spacer(modifier = Modifier.height(4.dp))
-                                    Text(
-                                        text = genresList.joinToString(", "),
-                                        style = MaterialTheme.typography.bodyMedium,
-                                        color = MaterialTheme.colorScheme.onBackground
-                                    )
-                                    Spacer(modifier = Modifier.height(16.dp))
-                                }
-                            } catch (e: Exception) {
-                                // Ignore JSON parsing errors
+                            }
+                            
+                            if (genresList.isNotEmpty()) {
+                                Text(
+                                    text = "Genres",
+                                    style = MaterialTheme.typography.labelMedium,
+                                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f)
+                                )
+                                Spacer(modifier = Modifier.height(4.dp))
+                                Text(
+                                    text = genresList.joinToString(", "),
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.onBackground
+                                )
+                                Spacer(modifier = Modifier.height(16.dp))
                             }
 
                             Text(

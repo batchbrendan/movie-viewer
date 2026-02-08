@@ -1,5 +1,6 @@
 package com.it2161.movieviewer.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -21,10 +22,10 @@ fun ReviewCard(
     var isExpanded by remember { mutableStateOf(false) }
 
     Card(
-        onClick = { isExpanded = !isExpanded },
         modifier = modifier
             .fillMaxWidth()
-            .padding(vertical = 4.dp),
+            .padding(vertical = 4.dp)
+            .clickable { isExpanded = !isExpanded },
         shape = RoundedCornerShape(8.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         colors = CardDefaults.cardColors(

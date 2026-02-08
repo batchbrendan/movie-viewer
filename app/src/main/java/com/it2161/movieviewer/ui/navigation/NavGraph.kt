@@ -111,10 +111,10 @@ fun MovieViewerApp(
             composable(Screen.Login.route) {
                 LoginScreen(
                     viewModel = authViewModel,
-                    onNavigateToRegistration = {
+                    onNavigateToRegister = {
                         navController.navigate(Screen.Registration.route)
                     },
-                    onNavigateToMovieList = {
+                    onLoginSuccess = {
                         navController.navigate(Screen.MovieList.route) {
                             popUpTo(Screen.Login.route) { inclusive = true }
                         }
@@ -125,8 +125,8 @@ fun MovieViewerApp(
             composable(Screen.Registration.route) {
                 RegistrationScreen(
                     viewModel = authViewModel,
-                    onNavigateBack = { navController.popBackStack() },
-                    onNavigateToMovieList = {
+                    onNavigateToLogin = { navController.popBackStack() },
+                    onRegistrationSuccess = {
                         navController.navigate(Screen.MovieList.route) {
                             popUpTo(Screen.Login.route) { inclusive = true }
                         }
@@ -137,13 +137,14 @@ fun MovieViewerApp(
             composable(Screen.MovieList.route) {
                 MovieListScreen(
                     viewModel = movieListViewModel,
-                    isOnline = isOnline,
-                    onMovieClick = { movieId ->
+                    isOffline = !isOnline,
+                    onNavigateToDetail = { movieId ->
                         navController.navigate(Screen.MovieDetail.createRoute(movieId))
                     },
-                    onSearchClick = {
+                    onNavigateToSearch = {
                         navController.navigate(Screen.Search.route)
-                    }
+                    },
+                    onOpenDrawer = { }
                 )
             }
 
@@ -155,7 +156,7 @@ fun MovieViewerApp(
                 MovieDetailScreen(
                     movieId = movieId,
                     viewModel = movieDetailViewModel,
-                    isOnline = isOnline,
+                    isOffline = !isOnline,
                     onNavigateBack = { navController.popBackStack() },
                     onNavigateToReviews = { id ->
                         navController.navigate(Screen.Reviews.createRoute(id))
@@ -171,7 +172,7 @@ fun MovieViewerApp(
                 ReviewsScreen(
                     movieId = movieId,
                     viewModel = reviewViewModel,
-                    isOnline = isOnline,
+                    isOffline = !isOnline,
                     onNavigateBack = { navController.popBackStack() }
                 )
             }
@@ -194,17 +195,17 @@ fun MovieViewerApp(
             composable(Screen.Favorites.route) {
                 FavoritesScreen(
                     viewModel = favoriteViewModel,
-                    onMovieClick = { movieId ->
+                    onNavigateToDetail = { movieId ->
                         navController.navigate(Screen.MovieDetail.createRoute(movieId))
-                    }
+                    },
+                    onOpenDrawer = { }
                 )
             }
 
             composable(Screen.Search.route) {
                 SearchScreen(
                     viewModel = searchViewModel,
-                    isOnline = isOnline,
-                    onMovieClick = { movieId ->
+                    onNavigateToDetail = { movieId ->
                         navController.navigate(Screen.MovieDetail.createRoute(movieId))
                     },
                     onNavigateBack = { navController.popBackStack() }

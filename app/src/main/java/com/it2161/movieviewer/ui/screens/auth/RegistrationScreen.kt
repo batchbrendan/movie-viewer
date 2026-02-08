@@ -7,11 +7,9 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CalendarToday
+import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Visibility
-import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -156,13 +154,13 @@ fun RegistrationScreen(
                             onValueChange = {},
                             label = { Text("Date of Birth") },
                             leadingIcon = {
-                                Icon(Icons.Default.CalendarToday, contentDescription = null)
+                                Icon(Icons.Default.DateRange, contentDescription = null)
                             },
                             modifier = Modifier.fillMaxWidth(),
                             readOnly = true,
                             trailingIcon = {
                                 IconButton(onClick = { showDatePicker = true }) {
-                                    Icon(Icons.Default.CalendarToday, contentDescription = "Pick date")
+                                    Icon(Icons.Default.DateRange, contentDescription = "Pick date")
                                 }
                             }
                         )
@@ -178,9 +176,9 @@ fun RegistrationScreen(
                             },
                             trailingIcon = {
                                 IconButton(onClick = { passwordVisible = !passwordVisible }) {
-                                    Icon(
-                                        imageVector = if (passwordVisible) Icons.Default.Visibility else Icons.Default.VisibilityOff,
-                                        contentDescription = if (passwordVisible) "Hide password" else "Show password"
+                                    Text(
+                                        text = if (passwordVisible) "HIDE" else "SHOW",
+                                        style = MaterialTheme.typography.labelSmall
                                     )
                                 }
                             },
@@ -207,9 +205,9 @@ fun RegistrationScreen(
                             },
                             trailingIcon = {
                                 IconButton(onClick = { confirmPasswordVisible = !confirmPasswordVisible }) {
-                                    Icon(
-                                        imageVector = if (confirmPasswordVisible) Icons.Default.Visibility else Icons.Default.VisibilityOff,
-                                        contentDescription = if (confirmPasswordVisible) "Hide password" else "Show password"
+                                    Text(
+                                        text = if (confirmPasswordVisible) "HIDE" else "SHOW",
+                                        style = MaterialTheme.typography.labelSmall
                                     )
                                 }
                             },

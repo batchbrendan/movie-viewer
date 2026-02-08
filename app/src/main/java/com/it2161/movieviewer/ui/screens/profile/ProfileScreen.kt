@@ -40,7 +40,6 @@ import java.util.*
 fun ProfileScreen(
     viewModel: ProfileViewModel,
     userId: String,
-    onNavigateBack: () -> Unit,
     onLogout: () -> Unit
 ) {
     val profileState by viewModel.profileState.collectAsState()
@@ -120,14 +119,14 @@ fun ProfileScreen(
                                 }
                             }
                         ) {
-                            Icon(
-                                imageVector = if (isEditMode) Icons.Default.Save else Icons.Default.Edit,
-                                contentDescription = if (isEditMode) "Save" else "Edit"
+                            Text(
+                                text = if (isEditMode) "SAVE" else "EDIT",
+                                style = MaterialTheme.typography.labelSmall
                             )
                         }
                     }
                     IconButton(onClick = onLogout) {
-                        Icon(Icons.Default.Logout, contentDescription = "Logout")
+                        Icon(Icons.Default.ExitToApp, contentDescription = "Logout")
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -235,7 +234,7 @@ fun ProfileScreen(
                             onValueChange = {},
                             label = { Text("Date of Birth") },
                             leadingIcon = {
-                                Icon(Icons.Default.CalendarToday, contentDescription = null)
+                                Icon(Icons.Default.DateRange, contentDescription = null)
                             },
                             modifier = Modifier.fillMaxWidth(),
                             enabled = isEditMode,
@@ -243,7 +242,7 @@ fun ProfileScreen(
                             trailingIcon = {
                                 if (isEditMode) {
                                     IconButton(onClick = { showDatePicker = true }) {
-                                        Icon(Icons.Default.CalendarToday, contentDescription = "Pick date")
+                                        Icon(Icons.Default.DateRange, contentDescription = "Pick date")
                                     }
                                 }
                             },
