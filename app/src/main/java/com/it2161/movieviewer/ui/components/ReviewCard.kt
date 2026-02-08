@@ -21,6 +21,7 @@ fun ReviewCard(
     var isExpanded by remember { mutableStateOf(false) }
 
     Card(
+        onClick = { isExpanded = !isExpanded },
         modifier = modifier
             .fillMaxWidth()
             .padding(vertical = 4.dp),
