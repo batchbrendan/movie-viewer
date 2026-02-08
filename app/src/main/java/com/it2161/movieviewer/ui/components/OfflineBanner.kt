@@ -5,9 +5,6 @@ import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.SignalWifiOff
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -34,13 +31,11 @@ fun OfflineBanner(
                 .padding(horizontal = 16.dp, vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Icon(
-                imageVector = Icons.Default.SignalWifiOff,
-                contentDescription = "Offline",
-                tint = Color.White,
-                modifier = Modifier.size(20.dp)
+            Text(
+                text = "⚠️",
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.padding(end = 8.dp)
             )
-            Spacer(modifier = Modifier.width(8.dp))
             Text(
                 text = "You are offline. Some features may be unavailable.",
                 style = MaterialTheme.typography.bodySmall,
