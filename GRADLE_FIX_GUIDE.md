@@ -1,5 +1,7 @@
 # Gradle Build Fix Guide
 
+> **Note about JDK Versions:** If you see "jbr-21" in your Android Studio instead of "jbr-17", that's perfectly fine! Both work. See `JDK_VERSION_NOTE.md` for full details.
+
 ## Problem
 The build fails with a JDK image transformation error:
 ```
@@ -124,7 +126,8 @@ Build should complete successfully without JDK transformation errors.
 3. **Use Android Studio's embedded JDK:**
    - In Android Studio: **File → Settings**
    - Navigate to: **Build, Execution, Deployment → Build Tools → Gradle**
-   - Set "Gradle JDK" to **"Embedded JDK (jbr-17)"**
+   - Set "Gradle JDK" to **"Embedded JDK"** (will show as jbr-17 or jbr-21 depending on your Android Studio version)
+   - Could be labeled as: **"jbr-17"**, **"jbr-21"**, or **"Embedded JDK"**
 
 4. **Check for corrupted files:**
    ```bash

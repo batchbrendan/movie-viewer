@@ -93,7 +93,8 @@ BUILD SUCCESSFUL in Xs
 
 ## More Details
 
-See `INTELLIJ_GRADLE_ERROR_FIX.md` for comprehensive troubleshooting guide.
+- See `INTELLIJ_GRADLE_ERROR_FIX.md` for comprehensive troubleshooting guide
+- See `JDK_VERSION_NOTE.md` if you have questions about JDK versions (jbr-17 vs jbr-21)
 
 The app code is perfect - it's just Android Studio cache corruption! 🎯
 

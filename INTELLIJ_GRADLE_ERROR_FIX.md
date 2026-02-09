@@ -1,5 +1,7 @@
 # IntelliJ/Android Studio Gradle Tooling Error - FIXED
 
+> **Note about JDK Versions:** If you see "jbr-21" in your Android Studio instead of "jbr-17", that's perfectly fine! Both work. See `JDK_VERSION_NOTE.md` for full details.
+
 ## The New Problem You're Seeing
 
 You're getting this error:
@@ -112,7 +114,8 @@ BUILD SUCCESSFUL
 
 2. **Manually set Gradle JDK:**
    - **File → Settings → Build, Execution, Deployment → Build Tools → Gradle**
-   - Set "Gradle JDK" to **"Embedded JDK (jbr-17)"**
+   - Set "Gradle JDK" to **"Embedded JDK"** (will show as jbr-17 or jbr-21 depending on your Android Studio version)
+   - If you see **"jbr-21"**, select that - it's Android Studio's embedded JDK 21
 
 3. **Disable offline mode:**
    - **File → Settings → Build, Execution, Deployment → Build Tools → Gradle**
