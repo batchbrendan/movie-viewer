@@ -2,6 +2,24 @@
 
 A complete Movie Viewer Android application built with Jetpack Compose, MVVM architecture, Room database, Retrofit, and Kotlin coroutines. The app retrieves movie data from TheMovieDB (TMDB) API.
 
+## 🎬 Quick Preview
+
+**Can't build the app yet?** No problem! View the complete UI mockups:
+
+👉 **[Open `mockups/screen-mockups.html`](mockups/screen-mockups.html) in your browser**
+
+See all 9 screens with Material Design 3 dark theme, including:
+- Login & Registration
+- Movie Lists (4 categories)
+- Movie Details & Reviews
+- Search & Favorites
+- Profile Management
+- Offline Mode
+
+*No build required - just double-click the HTML file!*
+
+---
+
 ## Features
 
 ### Basic Features (39 marks)
